@@ -1,25 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Todos from './todos/Todos';
+import Create from './todos/Create';
+import Edit from './todos/Edit';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link to="/" className="navbar-brand">
+            MERN-Stack Todo App
+          </Link>
+          <div className="collpase navbar-collapse">
+            <ul className="navbar-nav mr-auto">
+              <li className="navbar-item">
+                <Link to="/" className="nav-link">
+                  Todos
+                </Link>
+              </li>
+              <li className="navbar-item">
+                <Link to="/create" className="nav-link">
+                  Create Todo
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <h1>MERN stack todo app</h1>
+
+        <div>
+          <Route path="/" exact component={Todos} />
+          <Route path="/edit/:id" component={Edit} />
+          <Route path="/create" component={Create} />
+        </div>
+      </div>
+    </Router>
   );
 }
 
