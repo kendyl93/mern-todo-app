@@ -12,8 +12,8 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <Link to="/" className="navbar-brand">
             MERN-Stack Todo App
           </Link>
@@ -32,7 +32,8 @@ function App() {
             </ul>
           </div>
         </nav>
-
+      </div>
+      <div className="container">
         <h1>MERN stack todo app</h1>
 
         <div>
