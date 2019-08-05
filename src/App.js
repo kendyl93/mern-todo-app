@@ -34,7 +34,10 @@ function App() {
         </nav>
       </div>
       <div className="container">
-        <h1>MERN stack todo app</h1>
+        <h1>
+          MERN todo app <br />
+          <small>This app is a base for my future apps.</small>
+        </h1>
 
         <div>
           <Route path="/" exact component={Todos} />
