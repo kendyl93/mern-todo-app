@@ -9,17 +9,27 @@ const fetchData = async setTodos => {
 };
 
 const Todo = ({
-  todo: { description = '', responsible = '', priority = '', _id: id }
-}) => (
-  <tr>
-    <td>{description}</td>
-    <td>{responsible}</td>
-    <td>{priority}</td>
-    <td>
-      <Link to={`/edit/${id}`}>Edit</Link>
-    </td>
-  </tr>
-);
+  todo: {
+    description = '',
+    responsible = '',
+    priority = '',
+    completed,
+    _id: id
+  }
+}) => {
+  const maybeCompleted = completed ? 'completed' : '';
+
+  return (
+    <tr>
+      <td className={maybeCompleted}>{description}</td>
+      <td className={maybeCompleted}>{responsible}</td>
+      <td className={maybeCompleted}>{priority}</td>
+      <td>
+        <Link to={`/edit/${id}`}>Edit</Link>
+      </td>
+    </tr>
+  );
+};
 
 const todoList = todos => todos.map((todo, i) => <Todo todo={todo} key={i} />);
 
