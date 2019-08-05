@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const onChange = set => event => set(event.target.value);
 
@@ -12,12 +13,23 @@ const Create = () => {
   const onChangeTodoResponsible = onChange(setResponsible);
   const onChangeTodoPriority = onChange(setPriority);
 
+  const clearState = () => {
+    setDescription('');
+    setResponsible('');
+    setPriority('');
+    setCompleted(false);
+  };
+
   const onSubmit = event => {
     event.preventDefault();
-    console.log(`Form submitted:`);
-    console.log(`Todo Description: ${description}`);
-    console.log(`Todo Responsible: ${responsible}`);
-    console.log(`Todo Priority: ${priority}`);
+
+    const todo = { description, responsible, priority, completed };
+
+    axios
+      .post('http://localhost:4000/todos/add', todo)
+      .then(res => console.log(res.data));
+
+    clearState();
   };
 
   return (
