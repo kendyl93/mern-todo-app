@@ -1,5 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Todos = () => <h2>Welcome to the Todos component</h2>;
+const fetchData = async setTodos => {
+  const result = await axios('http://localhost:4000/todos/');
+
+  setTodos(result.data);
+};
+
+const Todo = ({
+  todo: { description = '', responsible = '', priority = '', _id: id }
+}) => (
+  <tr>
+    <td>{description}</td>
+    <td>{responsible}</td>
+    <td>{priority}</td>
+    <td>
+      <Link to={`/edit/${id}`}>Edit</Link>
+    </td>
+  </tr>
+);
+
+const todoList = todos => todos.map((todo, i) => <Todo todo={todo} key={i} />);
+
+const Todos = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    fetchData(setTodos);
+  }, []);
+
+  return (
+    <div>
+      <h3>Todos List</h3>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Responsible</th>
+            <th>Priority</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>{todos.length > 0 && todoList(todos)}</tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Todos;
