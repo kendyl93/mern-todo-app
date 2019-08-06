@@ -16,12 +16,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/todos-mern', {
 });
 const connection = mongoose.connection;
 
-connection.once('open', function() {
+connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
 
-todoRoutes.route('/').get(function(req, res) {
-  Todo.find(function(err, todos) {
+todoRoutes.route('/').get((req, res) => {
+  Todo.find((err, todos) => {
     if (err) {
       console.log(err);
     } else {
@@ -30,20 +30,34 @@ todoRoutes.route('/').get(function(req, res) {
   });
 });
 
-todoRoutes.route('/:id').get(function(req, res) {
-  let id = req.params.id;
-  Todo.findById(id, function(err, todo) {
+todoRoutes.route('/:id').get((req, res) => {
+  const {
+    params: { id }
+  } = req;
+
+  Todo.findById(id, (err, todo) => {
     res.json(todo);
   });
 });
 
-todoRoutes.route('/update/:id').post(function(req, res) {
-  Todo.findById(req.params.id, function(err, todo) {
-    if (!todo) res.status(404).send('data is not found');
-    else todo.description = req.body.description;
-    todo.responsible = req.body.responsible;
-    todo.priority = req.body.priority;
-    todo.completed = req.body.completed;
+todoRoutes.route('/:id').put((req, res) => {
+  const {
+    params: { id }
+  } = req;
+
+  Todo.findById(id, (err, todo) => {
+    if (!todo) {
+      res.status(404).send('data is not found');
+    } else {
+      const {
+        body: { description, responsible, priority, completed }
+      } = req;
+
+      todo.description = description;
+      todo.responsible = responsible;
+      todo.priority = priority;
+      todo.completed = completed;
+    }
 
     todo
       .save()
@@ -56,8 +70,26 @@ todoRoutes.route('/update/:id').post(function(req, res) {
   });
 });
 
+todoRoutes.route('/:id').delete((req, res) => {
+  const {
+    params: { id }
+  } = req;
+
+  Todo.findById(id, (err, todo) => {
+    todo
+      .remove()
+      .then(todo => {
+        res.json('Todo deleted!');
+      })
+      .catch(err => {
+        res.status(400).send('Update not possible');
+      });
+  });
+});
+
 todoRoutes.route('/add').post(function(req, res) {
-  let todo = new Todo(req.body);
+  const todo = new Todo(req.body);
+
   todo
     .save()
     .then(todo => {

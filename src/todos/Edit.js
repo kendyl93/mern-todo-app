@@ -41,7 +41,19 @@ class Edit extends Component {
     } = this.props;
     const todo = this.state;
 
-    await axios.post(`http://localhost:4000/todos/update/${id}`, todo);
+    await axios.put(`http://localhost:4000/todos/${id}`, todo);
+
+    this.props.history.push('/');
+  };
+
+  onDeleteClick = async () => {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    await axios.delete(`http://localhost:4000/todos/${id}`);
 
     this.props.history.push('/');
   };
@@ -85,10 +97,9 @@ class Edit extends Component {
       onChangeTodoDescription,
       onChangeTodoResponsible,
       onChangeTodoPriority,
-      onChangeTodoCompleted
+      onChangeTodoCompleted,
+      onDeleteClick
     } = this;
-
-    console.log({ todo: this.state });
 
     return (
       <div>
@@ -175,6 +186,10 @@ class Edit extends Component {
             />
           </div>
         </form>
+
+        <button onClick={onDeleteClick} className="btn btn-danger">
+          delete
+        </button>
       </div>
     );
   }
