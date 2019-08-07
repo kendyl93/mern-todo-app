@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+require('dotenv');
+
+const { HOST } = process.env;
+console.log({ HOST, process });
+const endpoint = query => `${HOST}/${query}`;
 
 const onChange = set => event => set(event.target.value);
 
@@ -25,9 +30,7 @@ const Create = () => {
 
     const todo = { description, responsible, priority, completed };
 
-    axios
-      .post('http://localhost:4000/todos/add', todo)
-      .then(res => console.log(res.data));
+    axios.post(endpoint('todos/add'), todo).then(res => console.log(res.data));
 
     clearState();
   };
