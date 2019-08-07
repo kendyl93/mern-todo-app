@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-require('dotenv');
 
-const { HOST } = process.env;
-console.log({ HOST, process });
-const endpoint = query => `${HOST}/${query}`;
+const { REACT_APP_HOST } = process.env;
+console.log({ REACT_APP_HOST });
+const endpoint = query => `${REACT_APP_HOST}/${query}`;
 
 const onChange = set => event => set(event.target.value);
 
