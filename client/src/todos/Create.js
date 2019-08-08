@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const { REACT_APP_HOST } = process.env;
-console.log({ REACT_APP_HOST });
+const { REACT_APP_HOST = 'http://localhost:4000' } = process.env;
 const endpoint = query => `${REACT_APP_HOST}/${query}`;
 
 const onChange = set => event => set(event.target.value);

@@ -6,14 +6,12 @@ const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 require('dotenv').config();
 
-const { REACT_APP_DB, REACT_APP_PORT_SERVER } = process.env;
-console.log({ REACT_APP_PORT_SERVER, REACT_APP_DB });
 const Todo = require('./model');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect(`${REACT_APP_DB}/todos-mern`, {
+mongoose.connect(`mongodb://127.0.0.1:27017/todos-mern`, {
   useNewUrlParser: true
 });
 const connection = mongoose.connection;
@@ -104,6 +102,6 @@ todoRoutes.route('/add').post(function(req, res) {
 
 app.use('/todos', todoRoutes);
 
-app.listen(REACT_APP_PORT_SERVER, function() {
-  console.log('Server is running on Port: ' + REACT_APP_PORT_SERVER);
+app.listen(4000, function() {
+  console.log('Server is running on Port: ' + 4000);
 });
