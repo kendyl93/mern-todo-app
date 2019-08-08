@@ -9,7 +9,7 @@ Steps to start the app:
 1. Install dependencies `npm install` in root folder
 2. Start development mode of the app `npm run dev`
 
-### TODO
+### TODO (Still in progress)
 
 1. Add scripts and configuration to build **production environment**
 2. Add `.env` files
