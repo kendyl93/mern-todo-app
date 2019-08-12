@@ -2,13 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
-
-console.log('****************************');
-console.log('****************************');
-console.log(`${process.env.SECRET_KEY} from webpack`);
-console.log('****************************');
-console.log('****************************');
+const { parsed: env } = require('dotenv').config({
+  path: path.join(__dirname, '../.env')
+});
 
 module.exports = {
   entry: {
@@ -41,16 +37,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      ENVIRONMENT: `<script>window.process = { env: ${JSON.stringify(
+        env
+      )} };</script>`,
+      template: './src/index.ejs'
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
-  ],
-  node: {
-    fs: 'empty'
-  }
+  ]
 };
