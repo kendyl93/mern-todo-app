@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": ".",
   "scripts": {
-    "start": "webpack-dev-server --mode production --open",
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "author": "",
