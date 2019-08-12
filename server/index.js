@@ -1,12 +1,19 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
-require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const Todo = require('./model');
+
+console.log('****************************');
+console.log('****************************');
+console.log(`${process.env.SECRET_KEY} from server`);
+console.log('****************************');
+console.log('****************************');
 
 app.use(cors());
 app.use(bodyParser.json());
