@@ -1,9 +1,11 @@
 const express = require('express');
+
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 const todoRoutes = express.Router();
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
@@ -12,10 +14,10 @@ const Todo = require('./model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect(`mongodb://127.0.0.1:27017/todos-mern`, {
+mongoose.connect('mongodb://127.0.0.1:27017/todos-mern', {
   useNewUrlParser: true
 });
-const connection = mongoose.connection;
+const { connection } = mongoose;
 
 connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
@@ -36,7 +38,7 @@ todoRoutes.route('/:id').get((req, res) => {
     params: { id }
   } = req;
 
-  Todo.findById(id, (err, todo) => {
+  Todo.findById(id, (_, todo) => {
     res.json(todo);
   });
 });
@@ -62,10 +64,10 @@ todoRoutes.route('/:id').put((req, res) => {
 
     todo
       .save()
-      .then(todo => {
+      .then(() => {
         res.json('Todo updated!');
       })
-      .catch(err => {
+      .catch(() => {
         res.status(400).send('Update not possible');
       });
   });
@@ -76,33 +78,33 @@ todoRoutes.route('/:id').delete((req, res) => {
     params: { id }
   } = req;
 
-  Todo.findById(id, (err, todo) => {
+  Todo.findById(id, (_, todo) => {
     todo
       .remove()
-      .then(todo => {
+      .then(() => {
         res.json('Todo deleted!');
       })
-      .catch(err => {
+      .catch(() => {
         res.status(400).send('Update not possible');
       });
   });
 });
 
-todoRoutes.route('/add').post(function(req, res) {
+todoRoutes.route('/add').post((req, res) => {
   const todo = new Todo(req.body);
 
   todo
     .save()
-    .then(todo => {
+    .then(() => {
       res.status(200).json({ todo: 'todo added successfully' });
     })
-    .catch(err => {
+    .catch(() => {
       res.status(400).send('adding new todo failed');
     });
 });
 
 app.use('/todos', todoRoutes);
 
-app.listen(4000, function() {
+app.listen(4000, () => {
   console.log('Server is running on Port: ' + 4000);
 });

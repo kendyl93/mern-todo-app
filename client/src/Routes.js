@@ -6,11 +6,11 @@ import Create from './todos/Create';
 import Edit from './todos/Edit';
 
 const Routes = () => (
-  <div>
-    <Route path="/" exact component={Todos} />
-    <Route path="/edit/:id" component={Edit} />
-    <Route path="/create" component={Create} />
-  </div>
+    <div>
+        <Route component={Todos} exact path="/" />
+        <Route component={Edit} path="/edit/:id" />
+        <Route component={Create} path="/create" />
+    </div>
 );
 
 export default Routes;

@@ -108,67 +108,67 @@ class Edit extends Component {
           <div className="form-group">
             <label>Description: </label>
             <input
-              type="text"
               className="form-control"
-              value={description}
               onChange={onChangeTodoDescription}
+              type="text"
+              value={description}
             />
           </div>
           <div className="form-group">
             <label>Responsible: </label>
             <input
-              type="text"
               className="form-control"
-              value={responsible}
               onChange={onChangeTodoResponsible}
+              type="text"
+              value={responsible}
             />
           </div>
           <div className="form-group">
             <div className="form-check form-check-inline">
               <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityLow"
-                value="Low"
                 checked={priority === 'Low'}
+                className="form-check-input"
+                id="priorityLow"
+                name="priorityOptions"
                 onChange={onChangeTodoPriority}
+                type="radio"
+                value="Low"
               />
               <label className="form-check-label">Low</label>
             </div>
             <div className="form-check form-check-inline">
               <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityMedium"
-                value="Medium"
                 checked={priority === 'Medium'}
+                className="form-check-input"
+                id="priorityMedium"
+                name="priorityOptions"
                 onChange={onChangeTodoPriority}
+                type="radio"
+                value="Medium"
               />
               <label className="form-check-label">Medium</label>
             </div>
             <div className="form-check form-check-inline">
               <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityHigh"
-                value="High"
                 checked={priority === 'High'}
+                className="form-check-input"
+                id="priorityHigh"
+                name="priorityOptions"
                 onChange={onChangeTodoPriority}
+                type="radio"
+                value="High"
               />
               <label className="form-check-label">High</label>
             </div>
           </div>
           <div className="form-check">
             <input
+              checked={completed}
               className="form-check-input"
               id="completedCheckbox"
-              type="checkbox"
               name="completedCheckbox"
               onChange={onChangeTodoCompleted}
-              checked={completed}
+              type="checkbox"
               value={completed}
             />
             <label className="form-check-label" htmlFor="completedCheckbox">
@@ -180,14 +180,14 @@ class Edit extends Component {
 
           <div className="form-group">
             <input
+              className="btn btn-primary"
               type="submit"
               value="Update Todo"
-              className="btn btn-primary"
             />
           </div>
         </form>
 
-        <button onClick={onDeleteClick} className="btn btn-danger">
+        <button className="btn btn-danger" onClick={onDeleteClick}>
           delete
         </button>
       </div>

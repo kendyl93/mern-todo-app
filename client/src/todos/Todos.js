@@ -31,7 +31,7 @@ const Todo = ({
   );
 };
 
-const todoList = todos => todos.map((todo, i) => <Todo todo={todo} key={i} />);
+const todoList = todos => todos.map((todo, i) => <Todo key={i} todo={todo} />);
 
 const Todos = () => {
   const [todos, setTodos] = useState([]);

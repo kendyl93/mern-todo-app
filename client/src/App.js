@@ -9,12 +9,12 @@ import Main from './Main';
 import './App.css';
 
 const App = () => (
-  <Router>
-    <div className="container-fluid">
-      <Navbar />
-      <Main />
-    </div>
-  </Router>
+    <Router>
+        <div className="container-fluid">
+            <Navbar />
+            <Main />
+        </div>
+    </Router>
 );
 
 export default App;
