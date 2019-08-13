@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const { HOST_URI } = window.process.env;
+
 class Edit extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ class Edit extends Component {
     } = this.props;
     const {
       data: { description, responsible, priority, completed }
-    } = await axios(`http://localhost:4000/todos/${id}`);
+    } = await axios(`${HOST_URI}/todos/${id}`);
 
     this.setState({
       description,
@@ -41,7 +43,7 @@ class Edit extends Component {
     } = this.props;
     const todo = this.state;
 
-    await axios.put(`http://localhost:4000/todos/${id}`, todo);
+    await axios.put(`${HOST_URI}/todos/${id}`, todo);
 
     this.props.history.push('/');
   };
@@ -53,7 +55,7 @@ class Edit extends Component {
       }
     } = this.props;
 
-    await axios.delete(`http://localhost:4000/todos/${id}`);
+    await axios.delete(`${HOST_URI}/todos/${id}`);
 
     this.props.history.push('/');
   };

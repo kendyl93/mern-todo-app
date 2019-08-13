@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+#static server files
+/server/public
+
 # misc
 .DS_Store
 .env
