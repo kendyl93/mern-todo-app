@@ -1,6 +1,6 @@
 # Todo react app
 
-This app would be my starting point of any future apps.
+This app would be my starting point of any future apps. App was deployed on [Heroku](https://todo-app-mern-pawel-stanecki.herokuapp.com)
 
 ## dev
 
@@ -11,7 +11,13 @@ Steps to start the app:
 
 ### TODO (Still in progress)
 
-1. Add scripts and configuration to build **production environment**
-2. Add `.env` files
-3. Configure **SCSS loader** and **img loader**
-4. **Deploy** the app to heroku/github-pages
+1. Deploying automation
+2. Investigate deploying `.env` after build to hide secret vars
+
+#### Current deploying process
+
+1. Check `.env` variables on client side
+2. Build client `npm run build` make sure you are in the client directory
+3. Copy builded files to `public` direactory on server and commit changes
+4. Push changes to heroku master `git push heroku master`
+5. Revert `.env` variables on the client side if needed
