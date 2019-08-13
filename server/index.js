@@ -4,16 +4,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
 const todoRoutes = express.Router();
+
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+const { DB_URI = 'mongodb://127.0.0.1:27017/todos-mern' } = process.env
 
 const Todo = require('./model');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos-mern', {
+mongoose.connect(DB_URI, {
   useNewUrlParser: true
 });
 const { connection } = mongoose;
