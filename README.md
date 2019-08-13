@@ -12,7 +12,7 @@ Steps to start the app:
 ### TODO (Still in progress)
 
 1. Deploying automation
-2. Investigate deploying `.env` after build to hide secret vars
+2. Investigate injection `.env` while building to hide secret vars
 
 #### Current deploying process
 
