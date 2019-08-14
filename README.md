@@ -13,6 +13,9 @@ Steps to start the app:
 
 1. Deploying automation
 2. Investigate injection `.env` while building to hide secret vars
+3. Refactor backend code
+4. Configure wepback production config file
+5. Add `SCSS` and `img` webpack loaders
 
 #### Current deploying process
 
