@@ -25,7 +25,10 @@ const Todo = ({
 
   return (
     <tr>
-      <td className={maybeCompleted}>{description}{completed && <img alt={maybeCompleted} src={completedImg} /> }</td>
+      <td className={maybeCompleted}>
+        {description}
+        {completed && <img alt={maybeCompleted} src={completedImg} />}
+      </td>
       <td className={maybeCompleted}>{responsible}</td>
       <td className={maybeCompleted}>{priority}</td>
       <td>

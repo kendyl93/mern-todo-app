@@ -7,12 +7,12 @@ import Navbar from './Navbar';
 import Main from './Main';
 
 const App = () => (
-    <Router>
-        <div className="container-fluid">
-            <Navbar />
-            <Main />
-        </div>
-    </Router>
+  <Router>
+    <div className="container-fluid">
+      <Navbar />
+      <Main />
+    </div>
+  </Router>
 );
 
 export default App;

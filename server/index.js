@@ -1,31 +1,19 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
+import { db_connect } from './db';
+import { PORT } from './environment';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+
 const todoRoutes = express.Router();
-
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
-
-const { PORT = 4000, DB_URI } = process.env
-
 const Todo = require('./model');
 
-app.use(express.static("public"));
+const app = express();
+app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/todos', todoRoutes);
 
-mongoose.connect(DB_URI, {
-  useNewUrlParser: true
-});
-
-const { connection } = mongoose;
-
-connection.once('open', () => {
-  console.log('MongoDB database connection established successfully');
-});
+db_connect();
 
 todoRoutes.route('/').get((req, res) => {
   Todo.find((err, todos) => {
