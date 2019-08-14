@@ -7,7 +7,7 @@ This app would be my starting point of any future apps. App was deployed on [Her
 Steps to start the app:
 
 1. Install dependencies `npm install` in root folder
-2. Start development mode of the app `npm run dev`
+2. Start development mode of the app `npm run start`
 
 ### TODO (Still in progress)
 
