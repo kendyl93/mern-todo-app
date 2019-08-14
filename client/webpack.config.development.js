@@ -31,17 +31,25 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-              },
-              {
+            },
+            {
                 test: /\.scss$/,
                 use: [
-                  'style-loader',
-                  'css-loader',
-                  {
+                    'style-loader',
+                    'css-loader',
+                    {
                     loader: 'sass-loader'
-                  }
+                    }
                 ]
-              },
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: [
+                    {
+                    loader: 'file-loader'
+                    }
+                ]
+            }
         ]
     },
     plugins: [
