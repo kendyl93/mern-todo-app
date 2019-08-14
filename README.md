@@ -16,6 +16,7 @@ Steps to start the app:
 3. Refactor backend code
 4. Configure wepback production config file
 5. Add `SCSS` and `img` webpack loaders
+6. Add pre-push hooks
 
 #### Current deploying process
 
