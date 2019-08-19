@@ -9,14 +9,33 @@ Steps to start the app:
 1. Install dependencies `npm install` in root folder
 2. Start development mode of the app `npm run start`
 
-### TODO (Still in progress)
+### Project consists of:
+
+App consist of:
+
+Backend:
+
+- NodeJS
+- Express
+- Mongoose
+
+Database:
+
+- Mongo
+
+Frontend:
+
+- React
+- Webpack
+- Jest
+
+App was deployed and store in Heroku.
+
+#### TODO (Still in progress)
 
 1. Deploying automation
 2. Investigate injection `.env` while building to hide secret vars
-3. Refactor backend code
-4. Configure wepback production config file
-5. Add `SCSS` and `img` webpack loaders
-6. Add pre-push hooks
+3. Optimize wepback production config file
 
 #### Current deploying process
 
