@@ -12,8 +12,12 @@
     "install-client": "cd client && npm install",
     "install-server": "cd server && npm install",
     "postinstall": "concurrently \"npm run install-server\" \"npm run install-client\"",
-    "pre-commit": "cd client && npm test",
     "server": "cd server && npm run start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cd client && npm test"
+    }
   },
   "repository": {
     "type": "git",
