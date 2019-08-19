@@ -53,10 +53,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './public/favicon.ico',
       ENVIRONMENT: `<script>window.process = { env: ${JSON.stringify(
         env
       )} };</script>`,
-      template: './src/index.ejs'
+      template: './public/index.ejs'
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
