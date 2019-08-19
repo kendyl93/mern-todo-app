@@ -53,7 +53,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: './public/favicon.ico',
       ENVIRONMENT: `<script>window.process = { env: ${JSON.stringify(
         env
       )} };</script>`,
