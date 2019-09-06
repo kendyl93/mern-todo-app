@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 import completedImg from '../images/OK.png';
 
-const { HOST_URI } = window.process.env;
+const { HOST_URI = 'http://localhost:4000' } = window.process.env;
 
 const fetchData = async setTodos => {
-  const result = await axios(`${HOST_URI}/todos/`);
+  const result = await axios(`${HOST_URI}`);
 
   setTodos(result.data);
 };

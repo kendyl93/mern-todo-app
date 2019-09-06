@@ -7,6 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.development.js --open",
     "build": "webpack --mode production --config webpack.config.production.js",
+    "deploy": "scp -i ~/.ssh/kendyl93.pem * ubuntu@ec2-18-216-56-193.us-east-2.compute.amazonaws.com:~/awsTestClient",
     "test": "jest"
   },
   "author": "",
