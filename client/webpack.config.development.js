@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { parsed: env } = require('dotenv').config({
-  path: path.join(__dirname, '../.env')
+  path: path.join(__dirname, '../.env.client')
 });
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  mode: 'development',
   devServer: { contentBase: './dist' },
   module: {
     rules: [

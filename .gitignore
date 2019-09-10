@@ -9,4 +9,5 @@
 # misc
 .DS_Store
 .env
-.env.production
+.env.client
+.env.production.client

@@ -8,7 +8,6 @@ const todoRoutes = express.Router();
 const Todo = require('./model');
 
 const app = express();
-app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', todoRoutes);

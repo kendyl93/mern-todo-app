@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const { parsed: env } = require('dotenv').config({
-  path: path.join(__dirname, '../.env.production')
+  path: path.join(__dirname, '../.env.production.client')
 });
 
 module.exports = {
@@ -11,9 +12,25 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[chunkhash].bundle.js'
   },
-  devServer: { contentBase: './dist' },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
