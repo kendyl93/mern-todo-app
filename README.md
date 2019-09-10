@@ -37,10 +37,15 @@ App was deployed and store in Heroku.
 2. Investigate injection `.env` while building to hide secret vars
 3. Optimize wepback production config file
 
-#### Current deploying process
+#### Current deploying process (Heroku)
 
 1. Check `.env` variables on client side
 2. Build client `npm run build` make sure you are in the client directory
 3. Copy builded files to `public` direactory on server and commit changes
 4. Push changes to heroku master `git push heroku master`
 5. Revert `.env` variables on the client side if needed
+
+### Deploy Server (AWS)
+
+1. Install deps `npm install`
+2. Restart pm2 process `pm2 start npm --name "backend" -- run start`
