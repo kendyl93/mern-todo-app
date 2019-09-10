@@ -49,3 +49,10 @@ App was deployed and store in Heroku.
 
 1. Install deps `npm install`
 2. Restart pm2 process `pm2 start npm --name "backend" -- run start`
+
+### Deploy Client (AWS)
+
+`
+
+1. Make sure you are in `dist` dir.
+2. Transfer files `scp -i ~/.ssh/sshFileName.pem * userName@hostName:~/dirName`
