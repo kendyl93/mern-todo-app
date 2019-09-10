@@ -41,7 +41,7 @@ App was deployed and store in Heroku.
 ### Deploy Server (AWS)
 
 1. Install deps `npm install`
-2. Restart pm2 process `pm2 start npm --name "backend" -- run start`
+2. Restart [pm2](http://pm2.keymetrics.io/docs/usage/quick-start/) process `pm2 start npm --name "backend" -- run start`
 
 ### Deploy Client (AWS)
 
