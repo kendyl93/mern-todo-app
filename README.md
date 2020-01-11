@@ -2,8 +2,6 @@
 
 This app would be my starting point of any future apps. App was deployed on [Heroku](https://todo-app-mern-pawel-stanecki.herokuapp.com)
 
-I was also deployed it to [AWS EC2](http://ec2-18-216-56-193.us-east-2.compute.amazonaws.com) but this is still in progress.
-
 ## dev
 
 Steps to start the app:
